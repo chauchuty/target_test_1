@@ -1,4 +1,6 @@
-exercicio1 = () => {
+import fs from 'fs'
+
+const exercicio1 = () => {
     let indice = 13
     let soma = 0
     let k = 0
@@ -11,7 +13,7 @@ exercicio1 = () => {
     console.log(soma)
 }
 
-exercicio2 = () => {
+const exercicio2 = () => {
     const isFibonacci = (num) => {
         let a = 0
         let b = 1
@@ -23,17 +25,22 @@ exercicio2 = () => {
     }
 
     isFibonacci(8)
-        ? console.log('É um número de Fibonacci') // Vai cair aqui!
+        ? console.log('É um número de Fibonacci')
         : console.log('Não é um número de Fibonacci')
 }
 
-exercicio3 = () => {
-    const faturamentoDiario = [
-        { "dia": 1, "valor": 10 },
-        { "dia": 2, "valor": 20 },
-        { "dia": 3, "valor": 30 },
-        { "dia": 4, "valor": 40 },
-    ]
+const exercicio3 = () => {
+    let faturamentoDiario
+    let data
+
+    try {
+        data = fs.readFileSync('./files/dados.json', 'utf8')
+    } catch (error) {
+        console.error('Erro ao ler o arquivo', error)
+        return
+    }
+
+    faturamentoDiario = JSON.parse(data)
 
     const diasComFaturamento = faturamentoDiario.filter(dia => dia.valor > 0)
 
@@ -51,7 +58,7 @@ exercicio3 = () => {
     console.log(`Dias acima da média: ${diasAcimaDaMedia}`)
 }
 
-exercicio4 = () => {
+const exercicio4 = () => {
     const faturamentoPorEstado = {
         "SP": 67836.43,
         "RJ": 36678.66,
@@ -68,7 +75,7 @@ exercicio4 = () => {
     }
 }
 
-exercicio5 = () => {
+const exercicio5 = () => {
     const inverterString = (str) => {
         let invertido = '';
         for (let i = str.length - 1; i >= 0; i--) {
@@ -82,13 +89,13 @@ exercicio5 = () => {
 
 (async () => {
     console.log('Exercício 1:')
-    await exercicio1() // Resposta: 91
+    exercicio1() // Resposta: 91
     console.log('\nExercício 2:')
-    await exercicio2() // É um número de Fibonacci
+    exercicio2() // É um número de Fibonacci
     console.log('\nExercício 3:')
-    await exercicio3() // Menor faturamento: 10, Maior faturamento: 40, Dias acima da média: 4
+    exercicio3() // Menor faturamento: 10, Maior faturamento: 40, Dias acima da média: 4
     console.log('\nExercício 4:')
-    await exercicio4() // SP: 42.89%, RJ: 23.20%, MG: 18.48%, ES: 17.21%, Outros: 12.22%
+    exercicio4() // SP: 42.89%, RJ: 23.20%, MG: 18.48%, ES: 17.21%, Outros: 12.22%
     console.log('\nExercício 5:')
-    await exercicio5() // sometisaS tregraT
+    exercicio5() // sometisaS tregraT
 })()

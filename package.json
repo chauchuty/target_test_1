@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Realizado em NodeJS",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node .",
     "dev": "nodemon ."
