@@ -1,1 +1,8 @@
-# target_test_1
+# Teste Target Sistemas 
+
+Realizado em NodeJS
+
+```
+npm i
+npm start
+```
